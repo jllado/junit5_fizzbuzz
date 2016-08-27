@@ -18,7 +18,12 @@ public class FizzBuzzTest {
         assertThat(fizzbuzz(1), is("1"));
     }
 
-    private String fizzbuzz(int number) {
-        return "";
+    @Test
+    public void return_two_when_two() throws Exception {
+        assertThat(fizzbuzz(2), is("2"));
+    }
+
+    private String fizzbuzz(Integer number) {
+        return number.toString();
     }
 }
