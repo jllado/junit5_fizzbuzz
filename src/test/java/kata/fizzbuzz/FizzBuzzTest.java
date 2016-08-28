@@ -3,6 +3,7 @@ package kata.fizzbuzz;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -51,14 +52,15 @@ public class FizzBuzzTest {
         public void playGame() throws Exception {
             assertThat(play(), hasSize(100));
             assertThat(play().get(0), is("1"));
-            assertThat(play().get(3), is("Fizz"));
-            assertThat(play().get(5), is("Buzz"));
+            assertThat(play().get(2), is("Fizz"));
+            assertThat(play().get(4), is("Buzz"));
             assertThat(play().get(16), is("17"));
             assertThat(play().get(19), is("Buzz"));
         }
 
         public List<String> play() {
-            return null;
+            FizzBuzz fizzBuzz = new FizzBuzz();
+            return IntStream.rangeClosed(1, 100).mapToObj(number -> fizzBuzz.of(number)).collect(Collectors.toList());
         }
 
     }
