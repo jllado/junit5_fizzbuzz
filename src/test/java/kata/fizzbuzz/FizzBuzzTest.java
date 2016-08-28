@@ -36,20 +36,16 @@ public class FizzBuzzTest {
     }
 
     private String fizzbuzz(Integer number) {
-        if (isDivisibleByThree(number)) {
+        if (isDivisible(number, 3)) {
             return "Fizz";
         }
-        if (isDivisibleByFive(number)) {
+        if (isDivisible(number, 5)) {
             return "Buzz";
         }
         return number.toString();
     }
 
-    private boolean isDivisibleByFive(int number) {
-        return number % 5 == 0;
-    }
-
-    private boolean isDivisibleByThree(int number) {
-        return number % 3 == 0;
+    private boolean isDivisible(int number, int divisor) {
+        return number % divisor == 0;
     }
 }
