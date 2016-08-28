@@ -29,11 +29,24 @@ public class FizzBuzzTest {
                 () -> assertThat(fizzbuzz(number), is("Fizz"))));
     }
 
+    @TestFactory
+    public Stream<DynamicTest> return_buzz_when_number_is_divisible_by_five() throws Exception {
+        return IntStream.of(5, 10).mapToObj(number -> DynamicTest.dynamicTest("Buzz when " + number,
+                () -> assertThat(fizzbuzz(number), is("Buzz"))));
+    }
+
     private String fizzbuzz(Integer number) {
         if (isDivisibleByThree(number)) {
             return "Fizz";
         }
+        if (isDivisibleByFive(number)) {
+            return "Buzz";
+        }
         return number.toString();
+    }
+
+    private boolean isDivisibleByFive(int number) {
+        return number % 5 == 0;
     }
 
     private boolean isDivisibleByThree(int number) {
