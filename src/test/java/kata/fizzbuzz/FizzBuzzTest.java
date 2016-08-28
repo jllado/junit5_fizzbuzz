@@ -3,7 +3,6 @@ package kata.fizzbuzz;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -59,8 +58,7 @@ public class FizzBuzzTest {
         }
 
         public List<String> play() {
-            FizzBuzz fizzBuzz = new FizzBuzz();
-            return IntStream.rangeClosed(1, 100).mapToObj(number -> fizzBuzz.of(number)).collect(Collectors.toList());
+            return new Game().play();
         }
 
     }
