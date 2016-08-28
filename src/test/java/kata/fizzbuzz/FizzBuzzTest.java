@@ -2,7 +2,6 @@ package kata.fizzbuzz;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
 import java.util.stream.IntStream;
@@ -19,20 +18,15 @@ import static org.hamcrest.core.Is.is;
 public class FizzBuzzTest {
 
     @TestFactory
-    @DisplayName("return")
     public Stream<DynamicTest> return_number_when_number() {
         return IntStream.of(1, 2, 4).mapToObj(number -> DynamicTest.dynamicTest(number + " when " + number,
                 () -> assertThat(fizzbuzz(number), is(String.valueOf(number)))));
     }
 
-    @Test
-    public void return_fizz_when_three() throws Exception {
-        assertThat(fizzbuzz(3), is("Fizz"));
-    }
-
-    @Test
-    public void return_fizz_when_six() throws Exception {
-        assertThat(fizzbuzz(6), is("Fizz"));
+    @TestFactory
+    public Stream<DynamicTest> return_fizz_when_number_is_divisible_by_three() throws Exception {
+        return IntStream.of(3, 6, 9).mapToObj(number -> DynamicTest.dynamicTest("Fizz when " + number,
+                () -> assertThat(fizzbuzz(number), is("Fizz"))));
     }
 
     private String fizzbuzz(Integer number) {
