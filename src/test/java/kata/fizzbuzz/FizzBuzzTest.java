@@ -18,6 +18,8 @@ import static org.hamcrest.core.Is.is;
 @DisplayName("FizzBuzz should")
 public class FizzBuzzTest {
 
+    private final FizzBuzz fizzBuzz = new FizzBuzz();
+
     @TestFactory
     public Stream<DynamicTest> return_number_when_number() {
         return IntStream.of(1, 2, 4).mapToObj(number -> DynamicTest.dynamicTest(number + " when " + number,
@@ -42,19 +44,7 @@ public class FizzBuzzTest {
     }
 
     private String fizzbuzz(Integer number) {
-        if (isDivisible(number, 3) && isDivisible(number, 5)) {
-            return "FizzBuzz";
-        }
-        if (isDivisible(number, 3)) {
-            return "Fizz";
-        }
-        if (isDivisible(number, 5)) {
-            return "Buzz";
-        }
-        return number.toString();
+        return fizzBuzz.of(number);
     }
 
-    private boolean isDivisible(int number, int divisor) {
-        return number % divisor == 0;
-    }
 }
