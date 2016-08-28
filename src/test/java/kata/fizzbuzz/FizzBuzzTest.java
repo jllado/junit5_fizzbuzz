@@ -1,7 +1,12 @@
 package kata.fizzbuzz;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestFactory;
+
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -10,19 +15,16 @@ import static org.hamcrest.core.Is.is;
 /**
  * Created by jllado on 27/08/16.
  */
+@DisplayName("FizzBuzz should")
 public class FizzBuzzTest {
 
-    @Test
-    @DisplayName("should return one when one")
-    public void return_one_when_one() {
-        assertThat(fizzbuzz(1), is("1"));
+    @TestFactory
+    @DisplayName("return")
+    public Stream<DynamicTest> return_number_when_number() {
+        return IntStream.of(1, 2, 4).mapToObj(number -> DynamicTest.dynamicTest(number + " when " + number,
+                () -> assertThat(fizzbuzz(number), is(String.valueOf(number)))));
     }
-
-    @Test
-    public void return_two_when_two() throws Exception {
-        assertThat(fizzbuzz(2), is("2"));
-    }
-
+    
     private String fizzbuzz(Integer number) {
         return number.toString();
     }
