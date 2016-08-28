@@ -24,8 +24,25 @@ public class FizzBuzzTest {
         return IntStream.of(1, 2, 4).mapToObj(number -> DynamicTest.dynamicTest(number + " when " + number,
                 () -> assertThat(fizzbuzz(number), is(String.valueOf(number)))));
     }
-    
+
+    @Test
+    public void return_fizz_when_three() throws Exception {
+        assertThat(fizzbuzz(3), is("Fizz"));
+    }
+
+    @Test
+    public void return_fizz_when_six() throws Exception {
+        assertThat(fizzbuzz(6), is("Fizz"));
+    }
+
     private String fizzbuzz(Integer number) {
+        if (isDivisibleByThree(number)) {
+            return "Fizz";
+        }
         return number.toString();
+    }
+
+    private boolean isDivisibleByThree(int number) {
+        return number % 3 == 0;
     }
 }
