@@ -2,6 +2,7 @@ package kata.fizzbuzz;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
 import java.util.stream.IntStream;
@@ -35,7 +36,15 @@ public class FizzBuzzTest {
                 () -> assertThat(fizzbuzz(number), is("Buzz"))));
     }
 
+    @Test
+    public void return_fizzbuzz_when_number_is_divisible_by_three_and_five() throws Exception {
+        assertThat(fizzbuzz(15), is("FizzBuzz"));
+    }
+
     private String fizzbuzz(Integer number) {
+        if (isDivisible(number, 3) && isDivisible(number, 5)) {
+            return "FizzBuzz";
+        }
         if (isDivisible(number, 3)) {
             return "Fizz";
         }
