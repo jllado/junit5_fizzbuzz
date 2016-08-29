@@ -15,13 +15,11 @@ public class FizzBuzz {
     }
 
     public String of(Integer number) {
-        for (Rule rule : rules) {
-            Optional<String> result = rule.apply(number);
-            if (result.isPresent()) {
-                return result.get();
-            }
-        }
-        return number.toString();
+        return rules.stream()
+                .map(rule -> rule.apply(number))
+                .filter(result -> result.isPresent())
+                .map(result -> result.get())
+                .findFirst().orElse(number.toString());
     }
 
     private boolean isDivisible(int number, int divisor) {
