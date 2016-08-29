@@ -1,5 +1,7 @@
 package kata.fizzbuzz;
 
+import java.util.stream.Stream;
+
 /**
  * Created by jllado on 29/08/16.
  */
@@ -11,7 +13,7 @@ public class Number {
         this.value = value;
     }
 
-    public boolean isDivisibleBy(Integer number) {
-        return value % number == 0;
+    public boolean isDivisibleBy(Integer... numbers) {
+        return Stream.of(numbers).allMatch(number -> value % number == 0);
     }
 }

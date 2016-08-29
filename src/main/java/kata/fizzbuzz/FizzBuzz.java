@@ -8,7 +8,7 @@ public class FizzBuzz {
     private List<Rule> rules = new ArrayList<>();
 
     public FizzBuzz() {
-        rules.add(new Rule(number -> number.isDivisibleBy(3) && number.isDivisibleBy(5), "FizzBuzz"));
+        rules.add(new Rule(number -> number.isDivisibleBy(3, 5), "FizzBuzz"));
         rules.add(new Rule(number -> number.isDivisibleBy(3), "Fizz"));
         rules.add(new Rule(number -> number.isDivisibleBy(5), "Buzz"));
     }
