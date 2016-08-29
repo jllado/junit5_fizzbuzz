@@ -10,6 +10,7 @@ public class FizzBuzz {
 
     public FizzBuzz() {
         rules.add(number -> isDivisible(number, 3) && isDivisible(number, 5) ? Optional.of("FizzBuzz") : Optional.empty());
+        rules.add(number -> isDivisible(number, 3) ? Optional.of("Fizz") : Optional.empty());
     }
 
     public String of(Integer number) {
@@ -18,9 +19,6 @@ public class FizzBuzz {
             if (result.isPresent()) {
                 return result.get();
             }
-        }
-        if (isDivisible(number, 3)) {
-            return "Fizz";
         }
         if (isDivisible(number, 5)) {
             return "Buzz";
