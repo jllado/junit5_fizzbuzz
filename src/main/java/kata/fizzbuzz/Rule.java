@@ -7,6 +7,6 @@ import java.util.Optional;
  */
 @FunctionalInterface
 public interface Rule {
-    public Optional<String> apply(Integer number);
+    public Optional<String> apply(Number number);
 
 }
