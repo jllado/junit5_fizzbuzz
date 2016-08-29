@@ -9,10 +9,8 @@ import java.util.stream.IntStream;
  */
 public class Game {
 
-    private FizzBuzz fizzBuzz = new FizzBuzz();
-
     public List<String> play() {
-        return IntStream.rangeClosed(1, 100).mapToObj(number -> fizzBuzz.of(number)).collect(Collectors.toList());
+        return IntStream.rangeClosed(1, 100).mapToObj(number -> new FizzBuzz(number).toString()).collect(Collectors.toList());
     }
 
 }

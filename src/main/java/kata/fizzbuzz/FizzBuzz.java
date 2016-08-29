@@ -5,15 +5,23 @@ import java.util.List;
 
 public class FizzBuzz {
 
-    private List<Rule> rules = new ArrayList<>();
+    private List<Rule> rules = rules();
+    private Integer number;
 
-    public FizzBuzz() {
+    public FizzBuzz(Integer number) {
+        this.number = number;
+    }
+
+    private List<Rule> rules() {
+        List<Rule> rules = new ArrayList<>();
         rules.add(new Rule(number -> number.isDivisibleBy(3, 5), "FizzBuzz"));
         rules.add(new Rule(number -> number.isDivisibleBy(3), "Fizz"));
         rules.add(new Rule(number -> number.isDivisibleBy(5), "Buzz"));
+        return rules;
     }
 
-    public String of(Integer number) {
+    @Override
+    public String toString() {
         return rules.stream()
                 .map(rule -> rule.apply(new Number(number)))
                 .filter(result -> result.isPresent())
