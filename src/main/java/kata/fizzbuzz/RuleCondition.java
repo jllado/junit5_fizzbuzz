@@ -5,5 +5,5 @@ package kata.fizzbuzz;
  */
 @FunctionalInterface
 public interface RuleCondition {
-    public boolean isValid(Number number);
+    boolean isValid(Number number);
 }
