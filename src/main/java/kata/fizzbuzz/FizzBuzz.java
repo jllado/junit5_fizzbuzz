@@ -23,9 +23,7 @@ public class FizzBuzz {
     @Override
     public String toString() {
         return rules.stream()
-                .map(rule -> rule.apply(new Number(number)))
-                .filter(result -> result.isPresent())
-                .map(result -> result.get())
+                .flatMap(rule -> rule.apply(new Number(number)).stream())
                 .findFirst().orElse(number.toString());
     }
 
