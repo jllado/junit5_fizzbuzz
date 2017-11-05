@@ -16,4 +16,10 @@ public class Number {
     public boolean isDivisibleBy(Integer... numbers) {
         return Stream.of(numbers).allMatch(number -> value % number == 0);
     }
+
+    @Override
+    public String toString() {
+        return value.toString();
+    }
+
 }

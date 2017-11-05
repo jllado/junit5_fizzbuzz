@@ -6,10 +6,10 @@ import java.util.List;
 public class FizzBuzz {
 
     private List<Rule> rules = rules();
-    private Integer number;
+    private Number number;
 
     public FizzBuzz(Integer number) {
-        this.number = number;
+        this.number = new Number(number);
     }
 
     private List<Rule> rules() {
@@ -22,9 +22,7 @@ public class FizzBuzz {
 
     @Override
     public String toString() {
-        return rules.stream()
-                .flatMap(rule -> rule.apply(new Number(number)).stream())
-                .findFirst().orElse(number.toString());
+        return rules.stream().flatMap(rule -> rule.applyFor(number).stream()).findFirst().orElse(number.toString());
     }
 
 }

@@ -15,7 +15,7 @@ public class Rule {
         this.result = result;
     }
 
-    public Optional<String> apply(Number number) {
+    public Optional<String> applyFor(Number number) {
         return condition.isValid(number) ? Optional.of(result) : Optional.empty();
     }
 
