@@ -7,15 +7,15 @@ import java.util.Optional;
  */
 public class Rule {
 
-    private RuleCondition condition;
-    private String result;
+    private final RuleCondition condition;
+    private final String result;
 
-    public Rule(RuleCondition condition, String result) {
+    public Rule(final RuleCondition condition, final String result) {
         this.condition = condition;
         this.result = result;
     }
 
-    public Optional<String> applyFor(Number number) {
+    public Optional<String> applyFor(final Number number) {
         return condition.isValid(number) ? Optional.of(result) : Optional.empty();
     }
 

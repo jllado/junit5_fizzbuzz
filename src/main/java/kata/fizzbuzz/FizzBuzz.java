@@ -9,9 +9,9 @@ public class FizzBuzz {
             new Rule(number1 -> number1.isDivisibleBy(3), "Fizz"),
             new Rule(number1 -> number1.isDivisibleBy(5), "Buzz"));
 
-    private Number number;
+    private final Number number;
 
-    public FizzBuzz(Integer number) {
+    public FizzBuzz(final Integer number) {
         this.number = new Number(number);
     }
 

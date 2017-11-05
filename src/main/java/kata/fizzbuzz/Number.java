@@ -9,11 +9,11 @@ public class Number {
 
     private final Integer value;
 
-    public Number(Integer value) {
+    public Number(final Integer value) {
         this.value = value;
     }
 
-    public boolean isDivisibleBy(Integer... numbers) {
+    public boolean isDivisibleBy(final Integer... numbers) {
         return Stream.of(numbers).allMatch(number -> value % number == 0);
     }
 
